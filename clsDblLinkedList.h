@@ -8,6 +8,8 @@ class clsDblLinkedList
 {
     private:
 
+    short _Size;
+
     bool _IsEmptyLinkedList()
     {
         return (Head == NULL);
@@ -27,6 +29,7 @@ class clsDblLinkedList
 
     clsDblLinkedList()
     {
+        _Size = 0;
         Head = NULL;
     }
 
@@ -44,6 +47,8 @@ class clsDblLinkedList
         }
 
         Head = NewNode;
+
+        _Size++;
     }
 
     Node *Find(T Value)
@@ -75,8 +80,6 @@ class clsDblLinkedList
         NewNode->Value = Value;
         NewNode->Prev = Current;
         NewNode->Next = Current->Next; 
-	
-        Current->Next = NewNode; 
 
 		// لازم نتاكد إنه في نود عشان نتحكم في الـ Prev بتاعها..
         if(Current->Next != NULL)
@@ -85,6 +88,10 @@ class clsDblLinkedList
 	    // النود الي بعمل Inseret After ليها.
             Current->Next->Prev = NewNode;
         }
+
+        Current->Next = NewNode; 
+
+        _Size++;
     }
 
     void InsertAtEnd(T Value)
@@ -98,6 +105,7 @@ class clsDblLinkedList
         {
             NewNode->Prev = NULL;
             Head = NewNode;
+            _Size++;
             return;
         }
 
@@ -110,6 +118,7 @@ class clsDblLinkedList
 
         Current->Next = NewNode;
         NewNode->Prev = Current;
+        _Size++;
     }
 
     void PrintList()
@@ -128,7 +137,7 @@ class clsDblLinkedList
     {
         // In Case of empty Linked List, or not found node..
         if(_IsEmptyLinkedList() || ToBeDeleted == NULL)
-        {
+        { 
             return;
         }
 
@@ -153,6 +162,7 @@ class clsDblLinkedList
             ToBeDeleted->Prev->Next = ToBeDeleted->Next;
         }
 
+        _Size--;
         delete ToBeDeleted;
     }
 
@@ -169,6 +179,7 @@ class clsDblLinkedList
         {
             delete Head;
             Head = NULL;
+            _Size--;
             return;
         }
 		
@@ -181,7 +192,8 @@ class clsDblLinkedList
         // Move The Head.
         Head = Head->Next;
 	
-	
+        _Size--;
+
 	    // delete keyword.
         delete temp;
 
@@ -200,6 +212,7 @@ class clsDblLinkedList
         {
             delete Head;
             Head = NULL;
+            _Size--;
             return;
         }
 
@@ -217,5 +230,11 @@ class clsDblLinkedList
 
         // قبل الاخيرة
         Current->Next = NULL;
+        _Size--;
+    }
+
+    short Size()
+    {
+        return _Size;
     }
 };
