@@ -240,6 +240,6 @@ class clsDblLinkedList
 
     bool IsEmpty()
     {
-        return Size() == 0;
+        return (Size() == 0 ? true : false);
     }
 };
