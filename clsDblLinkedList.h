@@ -237,4 +237,9 @@ class clsDblLinkedList
     {
         return _Size;
     }
+
+    bool IsEmpty()
+    {
+        return Size() == 0;
+    }
 };
