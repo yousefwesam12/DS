@@ -242,4 +242,12 @@ class clsDblLinkedList
     {
         return (Size() == 0 ? true : false);
     }
+
+    void Clear()
+    {
+        while(!IsEmpty())
+        {
+            DeleteFirstNode();
+        }
+    }
 };
