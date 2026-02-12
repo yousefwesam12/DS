@@ -1,33 +1,62 @@
 #include <iostream>
-#include "clsDblLinkedList.h"
+#include "clsMyQueue.h"
 using namespace std;
 
 int main()
 {
-    clsDblLinkedList<int> MydblLinkedList;
+    system("clear");
+    clsMyQueue <int> MyQueue;
 
-    if(MydblLinkedList.IsEmpty())
-    {
-        cout << "\n\nYes, List is Empty.\n";
-    }
-    else
-    {
-        cout << "\n\nNo, List is NOT Empty.\n";
-    }
+    MyQueue.push(10);
+    MyQueue.push(20);
+    MyQueue.push(30);
+    MyQueue.push(40);
+    MyQueue.push(50);
 
-    MydblLinkedList.InsertAtBeginning(5);
-    MydblLinkedList.InsertAtBeginning(4);
-    MydblLinkedList.InsertAtBeginning(3);
-    MydblLinkedList.InsertAtBeginning(2);
-    MydblLinkedList.InsertAtBeginning(1);
+    cout << "\nQueue: \n";
+    MyQueue.Print();
 
+    cout << "\n" << "Queue Size  => " << MyQueue.Size() << "\n";
+    cout << "\n" << "Queue Front => " << MyQueue.front() << "\n";
+    cout << "\n" << "Queue Back  => " << MyQueue.back();
 
-    cout << "\n" << "Linked List Content:\n";
-    MydblLinkedList.PrintList();
+    MyQueue.pop();
+
+    cout << "\n" << "After pop():\n";
+    MyQueue.Print();
     
-    MydblLinkedList.InsertAfter(4,500);
+    // #Extension 1
+    cout << "\n\n" << " Item (2) : " << MyQueue.GetItem(2);
+
+    // #Extension 2 
+    MyQueue.Reverse();
+    cout << "\n\n" << "Queue After Reverse() : \n";
+    MyQueue.Print();
+
+    // #Extension 3
+    MyQueue.UpdateItem(2,600);
+    cout << "\n\nQueue After updating Item (2) to 600 : \n";
+    MyQueue.Print();
+
+    // #Extension 4
+    MyQueue.InsertAfter(2,800);
+    cout << "\n\nQueue After Inserting 800 after Item (2) : \n";
+    MyQueue.Print();
+
+    // #Extension 5
+    MyQueue.InsertAtFront(1000);
+    cout << "\n\nQueue After Inserting 1000 at front : \n";
+    MyQueue.Print();
+
+    // #Extension 6
+    MyQueue.InsertAtBack(2000);
+    cout << "\n\nQueue After Inserting 2000 at back : \n";
+    MyQueue.Print();
+
+    // #Extension 7
+    MyQueue.Clear();
+    cout << "\n\nQueue after clear() : \n";
+    MyQueue.Print();
 
 
-    cout << "\nAfter Inserting: \n";
-    MydblLinkedList.PrintList();
 }

@@ -15,7 +15,6 @@ class clsDblLinkedList
         return (Head == NULL);
     }
     
-
     public:
 
     class Node

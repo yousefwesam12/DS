@@ -1,1 +1,1 @@
-Current->Next != NULL
+Type
