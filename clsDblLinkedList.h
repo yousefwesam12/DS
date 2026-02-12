@@ -320,4 +320,17 @@ class clsDblLinkedList
         TargetNode->Value = NewValue;
         return true;
     }   
+
+    bool InsertAfter(short Index, T Value)
+    {
+        Node *TargetNode = GetNode(Index);
+
+        if(TargetNode == NULL)
+        {
+            return false;
+        }
+
+        InsertAfter(TargetNode,Value);
+        return true;
+    }
 };

@@ -25,8 +25,9 @@ int main()
     cout << "\n" << "Linked List Content:\n";
     MydblLinkedList.PrintList();
     
-    MydblLinkedList.UpdateItem(2,500);
+    MydblLinkedList.InsertAfter(4,500);
 
-    cout << "\nAfter Updating Item Which Index is (2): \n";
+
+    cout << "\nAfter Inserting: \n";
     MydblLinkedList.PrintList();
 }
