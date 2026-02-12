@@ -14,7 +14,8 @@ class clsDblLinkedList
     {
         return (Head == NULL);
     }
-   
+    
+
     public:
 
     class Node
@@ -250,4 +251,73 @@ class clsDblLinkedList
             DeleteFirstNode();
         }
     }
+
+    void Reverse()
+    {
+        if(IsEmpty() || Size() == 1)
+        {
+            return;
+        }
+
+         Node *Current = Head;
+         Node *Temp = nullptr;
+         
+         while(Current != NULL)
+         {
+
+            Temp = Current->Prev;
+
+            Current->Prev = Current->Next;
+
+            Current->Next = Temp;
+
+            Current = Current->Prev;
+         }
+
+         Head = Temp->Prev;
+        
+    }
+
+    Node *GetNode(short Index)
+    {
+        if(Index > _Size - 1 || Index < 0)
+        {
+            return NULL;
+        }
+
+        Node *Current = Head;
+        short Counter = 0;
+
+        while(Current != NULL)
+        {
+            if(Counter == Index)
+            {
+                break;
+            }
+            Current = Current->Next;
+            Counter++;
+        }
+
+        return Current;
+    }
+
+    T GetItem(short Index)
+    {
+        Node *Temp = GetNode(Index);
+
+        return (Temp == NULL) ? NULL : Temp->Value;
+    }
+
+    bool UpdateItem(short Index, T NewValue)
+    {
+        Node *TargetNode = GetNode(Index);
+
+        if(TargetNode == NULL)
+        {
+            return false;
+        }
+
+        TargetNode->Value = NewValue;
+        return true;
+    }   
 };

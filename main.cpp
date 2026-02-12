@@ -24,11 +24,9 @@ int main()
 
     cout << "\n" << "Linked List Content:\n";
     MydblLinkedList.PrintList();
-  
-    cout << "\nNumber of Items in the linked list = " << MydblLinkedList.Size() << endl;
+    
+    MydblLinkedList.UpdateItem(2,500);
 
-    cout << "\nExecuting .Clear()";
-    MydblLinkedList.Clear();
-    cout << "\nNumber of items in the linked list = " << MydblLinkedList.Size() << endl;
-
+    cout << "\nAfter Updating Item Which Index is (2): \n";
+    MydblLinkedList.PrintList();
 }
