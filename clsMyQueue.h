@@ -7,7 +7,7 @@ template <class T>
 class clsMyQueue 
 {
 
-    private:
+    protected:
     clsDblLinkedList <T> MyQueue;
 
     public:
