@@ -13,10 +13,6 @@ class clsMyStack : public clsMyQueue <T>
     {
        clsMyQueue<T>::MyQueue.InsertAtBeginning(Value);
     }
-    void pop()
-    {
-       clsMyQueue<T>::MyQueue.DeleteFirstNode();
-    }
     T Top()
     {
         return clsMyQueue<T>::front();
