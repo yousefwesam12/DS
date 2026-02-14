@@ -85,9 +85,10 @@ class clsDynamicArray
         // In case the New Size is bigger than the original one.
         _Size = NewSize;
 
-        // We delete the previous values..
+        // We delete the previous values.. to free the memory
         delete []OriginalArray;
 
+        // change the pinter of original array in the stack to point to temp array in the heap..
         OriginalArray = TempArray;
         
     }
