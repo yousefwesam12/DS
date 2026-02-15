@@ -124,4 +124,34 @@ class clsDynamicArray
 
         return OriginalArray[Index];
     }
+
+    bool DeleteItem(int Index)
+    {
+        if(Index > _Size - 1 || Index < 0)
+            return false;
+
+  
+        TempArray = new T [_Size - 1]; 
+
+        // Copy All Elements Before The Index
+        // 10 20 30 40 50
+        // 10 20 40 50
+        for(int i = 0; i<Index;i++)
+        {
+            TempArray[i] = OriginalArray[i];
+            // Temp[0] = 10;
+            // Temp[1] = 20;
+        }
+
+        // Copy All Elements After The Index
+        for(int i = Index + 1; i < _Size; i++)
+        {
+            TempArray[i - 1] = OriginalArray[i];
+        }
+
+        _Size--;
+        delete []OriginalArray;
+        OriginalArray = TempArray;
+        return true;
+    }
 };
