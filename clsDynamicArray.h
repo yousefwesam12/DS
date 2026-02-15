@@ -43,13 +43,11 @@ class clsDynamicArray
             return (_Size == 0);
         }
 
-    
     int Size()
         {
             return _Size;
         }
 
-    
     void PrintList()
         {
             for(int i = 0;i<_Size;i++)
@@ -62,18 +60,21 @@ class clsDynamicArray
     void Resize(int NewSize)
     {
         // Exit The Function instatntly..
+        // for ex.. Resize(-1) or Resize(5) and the size is 5..
         if(NewSize < 0 || NewSize == _Size)
         {
             return;
         }
-
+        
         // Allocate New Temp Array With the size passed..
         TempArray = new T[NewSize];
 
         // Limit the original size to the new size if it is less..
-        if(NewSize < _Size)
+        // for ex.. _Size = 5, NewSize = 2 
+        if(_Size > NewSize)
         {
             _Size = NewSize;
+            // _Size = 2
         }
 
         // copy all data from original array untill the size
@@ -91,5 +92,36 @@ class clsDynamicArray
         // change the pinter of original array in the stack to point to temp array in the heap..
         OriginalArray = TempArray;
         
+    }
+
+    void Reverse()
+    {
+        TempArray = new T [_Size];
+
+        for(int i = 0;i < _Size; i++)
+        {
+            TempArray[i] = OriginalArray[_Size - 1 - i];
+        }
+
+        delete []OriginalArray;
+
+        OriginalArray = TempArray;
+    }
+
+    void Clear()
+    {
+        delete []OriginalArray;
+        OriginalArray = nullptr;
+        _Size = 0;
+    }
+
+    T GetItem(int Index)
+    {
+        if(Index > _Size - 1 || Index < 0)
+        {
+            return NULL;
+        }
+
+        return OriginalArray[Index];
     }
 };
