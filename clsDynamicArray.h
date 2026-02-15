@@ -125,7 +125,7 @@ class clsDynamicArray
         return OriginalArray[Index];
     }
 
-    bool DeleteItem(int Index)
+    bool DeleteItemAt(int Index)
     {
         if(Index > _Size - 1 || Index < 0)
             return false;
@@ -152,6 +152,40 @@ class clsDynamicArray
         _Size--;
         delete []OriginalArray;
         OriginalArray = TempArray;
+        return true;
+    }
+
+    void DeleteFirstItem()
+    {
+        DeleteItemAt(0);
+    }
+    
+    void DeleteLastItem()
+    {
+        DeleteItemAt(_Size - 1);
+    }
+
+    int Find(T Value)
+    {
+        // Returns the index..
+        for(int i = 0;i<_Size;i++)
+        {
+            if(OriginalArray[i] == Value)
+                return i;
+        }
+        return -1;
+    }
+
+    bool DeleteItem(T Value)
+    {
+        int Index = Find(Value);
+        
+        if(Index == -1)
+        {
+            return false;
+        }
+
+        DeleteItemAt(Index);
         return true;
     }
 };
