@@ -218,4 +218,38 @@ class clsDynamicArray
         OriginalArray = TempArray;
         return true;
     }
+
+    void InsertAtBeginning(T Value)
+    {
+        InsertAt(0,Value);
+    }
+
+    void InsertAtEnd(T Value)
+    {
+        InsertAt(_Size, Value);
+    }
+
+    void InsertBefore(int Index, T Value)
+    {
+        if(Index < 1)
+        {
+            InsertAt(0,Value);
+        }
+        else
+        {
+            InsertAt(Index - 1,Value);
+        }
+    }
+
+    void InsertAfter(int Index, T Value)
+    {
+        if(Index >= _Size)
+        {
+            InsertAt(_Size,Value);
+        }
+        else
+        {
+            InsertAt(Index + 1,Value);
+        }
+    }
 };
