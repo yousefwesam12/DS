@@ -6,10 +6,16 @@ template <class T>
 
 class clsDynamicArray
 {
+ 
     protected:
     int _Size = 0;
     T *TempArray;
 
+    private:
+    bool _IsValidIndex(short Index)
+    {
+        return (Index < _Size) && (Index >= 0);
+    }
 
     public:
     T * OriginalArray;
@@ -61,7 +67,7 @@ class clsDynamicArray
     {
         // Exit The Function instatntly..
         // for ex.. Resize(-1) or Resize(5) and the size is 5..
-        if(NewSize < 0 || NewSize == _Size)
+        if(NewSize == _Size || NewSize < 0)
         {
             return;
         }
@@ -74,7 +80,6 @@ class clsDynamicArray
         if(_Size > NewSize)
         {
             _Size = NewSize;
-            // _Size = 2
         }
 
         // copy all data from original array untill the size
@@ -117,7 +122,7 @@ class clsDynamicArray
 
     T GetItem(int Index)
     {
-        if(Index > _Size - 1 || Index < 0)
+        if(!_IsValidIndex(Index))
         {
             return NULL;
         }
@@ -127,26 +132,21 @@ class clsDynamicArray
 
     bool DeleteItemAt(int Index)
     {
-        if(Index > _Size - 1 || Index < 0)
-            return false;
-
-  
-        TempArray = new T [_Size - 1]; 
-
-        // Copy All Elements Before The Index
-        // 10 20 30 40 50
-        // 10 20 40 50
-        for(int i = 0; i<Index;i++)
+        if(!_IsValidIndex(Index))
         {
-            TempArray[i] = OriginalArray[i];
-            // Temp[0] = 10;
-            // Temp[1] = 20;
+            return false;
         }
 
-        // Copy All Elements After The Index
+        TempArray = new T [_Size - 1];
+
+        for(int i = 0;i<Index;i++)
+        {
+            TempArray[i] = OriginalArray[i];
+        }
+
         for(int i = Index + 1; i < _Size; i++)
         {
-            TempArray[i - 1] = OriginalArray[i];
+            TempArray[i-1] = OriginalArray[i];
         }
 
         _Size--;
@@ -162,7 +162,7 @@ class clsDynamicArray
     
     void DeleteLastItem()
     {
-        DeleteItemAt(_Size - 1);
+        DeleteItemAt(_Size -  1);
     }
 
     int Find(T Value)
@@ -186,6 +186,36 @@ class clsDynamicArray
         }
 
         DeleteItemAt(Index);
+        return true;
+    }
+
+    bool InsertAt(int Index, T Value)
+    {
+        if(!_IsValidIndex(Index))
+        {
+            return false;
+        }
+
+        TempArray = new T [_Size + 1];
+
+        // 10 20 30 40 50
+        // 10 20 500 30 40 50
+
+        for(int i = 0;i<Index;i++)
+        {
+            TempArray[i] = OriginalArray[i];
+        }
+
+        TempArray[Index] = Value;
+
+        for(int i = Index;i<_Size;i++)
+        {  
+            TempArray[i + 1] = OriginalArray[i]; 
+        }
+
+        delete []OriginalArray;
+        _Size++;
+        OriginalArray = TempArray;
         return true;
     }
 };
