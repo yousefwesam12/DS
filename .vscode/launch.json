@@ -1,17 +1,17 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
-      "name": "(lldb) Launch",
+      "name": "C/C++: clang++ build and debug active file",
       "type": "cppdbg",
       "request": "launch",
-      "program": "enter program name, for example ${workspaceFolder}/a.out",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "lldb"
+      "MIMode": "lldb",
+      "preLaunchTask": "C/C++: clang++ build active file"
     },
     {
       "name": "C/C++ Runner: Debug Session",
@@ -21,5 +21,6 @@
       "cwd": "/Users/yousefwesam398gmail.com/Desktop/DS",
       "program": "/Users/yousefwesam398gmail.com/Desktop/DS/build/Debug/outDebug"
     }
-  ]
+  ],
+  "version": "2.0.0"
 }

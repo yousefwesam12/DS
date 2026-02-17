@@ -1,32 +1,30 @@
 #include <iostream>
-#include "clsDynamicArray.h"
-
+#include "clsMyString.h"
 using namespace std;
 
 int main()
 {
 
-    clsDynamicArray <int> MyDynamicArray(5);
+    cout << "\n\n\t\t\t\t\tUndo/Redo Project\n\n";
 
-    MyDynamicArray.SetItem(0,10);
-    MyDynamicArray.SetItem(1,20);
-    MyDynamicArray.SetItem(2,30);
-    MyDynamicArray.SetItem(3,40);
-    MyDynamicArray.SetItem(4,50);
+    clsMyString S1;
 
-    cout << "\n" << "Is Empty?  " << MyDynamicArray.IsEmpty();
-    cout << "\n" << "Array Size: " << MyDynamicArray.Size();
-    cout << "\n\n" << "Array Items : \n";
+    S1.SetValue("A");
+    cout << "\n S1 = " << S1.GetValue() << endl;
 
-    MyDynamicArray.PrintList();
+    S1.SetValue("B");
+    cout << "\n S1 = " << S1.GetValue() << endl;
 
-    
-    MyDynamicArray.InsertAtBeginning(400);
-    MyDynamicArray.InsertBefore(2,500);
-    MyDynamicArray.InsertAfter(2,600);
-    MyDynamicArray.InsertAtEnd(800);
+    cout << "\n\nUndo : ";
+    cout << "\n______________\n";
 
-    cout << "\n" << "Array Size: " << MyDynamicArray.Size() << endl;
-    MyDynamicArray.PrintList();
+    S1.Undo();
+    cout << "\n" << "S1 after undo = " << S1.GetValue() << endl;
+
+    cout << "\n\nRedo : ";
+    cout << "\n______________\n";
+
+    S1.Redo();
+    cout << "\n" << "S1 after redo = " << S1.GetValue() << endl;
 
 }
