@@ -1,30 +1,47 @@
 #include <iostream>
-#include "clsMyString.h"
+#include "clsQueueLine.h"
 using namespace std;
 
 int main()
 {
+    system("clear");
+    clsQueueLine PayBillsQueue("A0",10);
+    clsQueueLine SubscriptionsQueue("B0",5);
 
-    cout << "\n\n\t\t\t\t\tUndo/Redo Project\n\n";
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();    
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();
 
-    clsMyString S1;
+    cout << "\n" << "Pay Bills Queue Info:\n";
+    PayBillsQueue.PrintInfo();
 
-    S1.SetValue("A");
-    cout << "\n S1 = " << S1.GetValue() << endl;
+    PayBillsQueue.PrintTicketsLineRTL();
+    PayBillsQueue.PrintTicketsLineLTR();
 
-    S1.SetValue("B");
-    cout << "\n S1 = " << S1.GetValue() << endl;
+    PayBillsQueue.PrintAllTickets();
 
-    cout << "\n\nUndo : ";
-    cout << "\n______________\n";
+    PayBillsQueue.ServeNextClient();
+    cout << "\n" << "Pay Bills Queue After Serving One Client:\n\n";
+    PayBillsQueue.PrintInfo();
 
-    S1.Undo();
-    cout << "\n" << "S1 after undo = " << S1.GetValue() << endl;
+    cout << "\n" << "Subscriptions Queue Info:\n";
+    SubscriptionsQueue.IssueTicket();
+    SubscriptionsQueue.IssueTicket();
+    SubscriptionsQueue.IssueTicket();
 
-    cout << "\n\nRedo : ";
-    cout << "\n______________\n";
+    SubscriptionsQueue.PrintInfo();
 
-    S1.Redo();
-    cout << "\n" << "S1 after redo = " << S1.GetValue() << endl;
+
+    SubscriptionsQueue.PrintTicketsLineRTL();
+    SubscriptionsQueue.PrintTicketsLineLTR();
+
+    SubscriptionsQueue.PrintAllTickets();
+
+    
+    cout << "\n" << "Subscriptions Queue After Serving One Client:\n\n";
+    SubscriptionsQueue.ServeNextClient();
+    SubscriptionsQueue.PrintInfo();
 
 }
