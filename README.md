@@ -1,120 +1,43 @@
-📚 Data Structures — C++ Project
+# 🛠️ Custom Data Structures Library (C++)
 
-A custom implementation of fundamental data structures built completely from scratch using C++ without relying on STL containers.
-This project was created to deeply understand how data structures work internally, including memory management, pointer manipulation, algorithmic complexity, and low-level implementation details.
+A comprehensive, low-level **Data Structures Library** implemented entirely from scratch in **C++** using strict **Object-Oriented Programming (OOP)** templates. This project showcases deep fundamental knowledge of memory management, pointer manipulation, and resource optimization without relying on the C++ Standard Template Library (STL).
 
-📋 Table of Contents
-Project Overview
-Implemented Data Structures
-Features
-Technical Details
-How to Run the Project
-Code Breakdown
-Concepts Learned
-📖 Project Overview
+---
 
-This project is a personal implementation of core computer science data structures using pure C++.
-Instead of using ready-made STL containers, every structure was manually built from the ground up to gain a deeper understanding of:
+## ✨ Implemented Data Structures
 
-Dynamic memory allocation
-Pointer manipulation
-Internal container behavior
-Data organization
-Algorithmic efficiency
-Object-Oriented Design
+* **🔗 Doubly Linked List (`clsDblLinkedList`):** Complete bidirectional sequential access structures, managing pointer allocations, node insertions, and target deletions safely.
+* **📦 Dynamic Array (`clsDynamicArray`):** A custom, re-sizable vector-like container featuring dynamic heap-memory reallocations, item indexing, and automatic capacity resizing.
+* **🥞 Stack (`clsMyStack`):** A Last-In, First-Out (**LIFO**) structural container built entirely on top of custom underlying data utilities.
+* **⏳ Queue (List-Based) (`clsMyQueue`):** A First-In, First-Out (**FIFO**) pipeline structure utilizing the custom Doubly Linked List for optimal $O(1)$ push/pop node operations.
+* **🔢 Queue (Array-Based) (`clsMyQueueArr`):** A memory-optimized variation of the FIFO layout utilizing a contiguous dynamic array to track linear processing loops.
+* **🚶‍♂️ Queue Line Simulation (`clsQueueLine`):** A real-world practical use-case simulation managing service lines, ticketing counters, and waiting time tracks utilizing custom queues.
 
-The project focuses heavily on low-level implementation details and clean modular architecture.
+---
 
-🧩 Implemented Data Structures
-🔹 Dynamic Array
-🔹 Stack
-🔹 Queue
-🔹 Singly Linked List
-🔹 Doubly Linked List
-✨ Features
-⚡ Manual dynamic memory management
-🧠 Custom implementations without STL
-🔄 Dynamic resizing for arrays
-📌 Pointer-based node manipulation
-➕ Insertion & deletion operations
-🔍 Searching and traversal algorithms
-📚 Push / Pop stack operations
-🚪 Enqueue / Dequeue queue operations
-🏗️ Clean Object-Oriented class design
-♻️ Modular and reusable architecture
-🛠️ Technical Details
-Language: C++
-Paradigm: Object-Oriented Programming (OOP)
-Concepts Used:
-Dynamic Memory Allocation
-Pointers & References
-Encapsulation
-Abstraction
-Algorithmic Complexity
-Manual Memory Handling
-🚀 How to Run the Project
-Clone the repository:
-git clone https://github.com/yousefwesam12/DS.git
-Open the project using:
-Visual Studio
-or
-Code::Blocks
-or
-Any C++ IDE / Compiler
-Build and run the project.
-💻 Code Breakdown
-Dynamic Array
+## 📂 Key Technical Concepts Explored
 
-A custom resizable array implementation supporting:
+* **Memory Management:** Direct control over heap resource allocation/deallocation (`new` and `delete` operations) preventing dangerous leaks.
+* **Generics & Generic Programming:** Designed to support universal primitive or custom object data types via C++ Templates.
+* **Pointer Arithmetic:** Manual reference mapping and node reconstruction during critical sorting, parsing, or reversing tasks.
 
-Automatic resizing
-Insertions & deletions
-Index-based access
-Capacity management
-Stack
+---
 
-A LIFO (Last In First Out) structure supporting:
+## 📂 Repository File Blueprint
 
-Push
-Pop
-Peek
-Empty checking
-Queue
+* `clsDblLinkedList.h`: Pointer nodes, forward/backward linking logic.
+* `clsDynamicArray.h`: Dynamic element shifting, size scaling, and search routines.
+* `clsMyQueue.h` & `clsMyQueueArr.h`: Comparing node-linked queues with contiguous collection indexing arrays.
+* `clsMyStack.h`: Encapsulating dynamic arrays/lists to enforce top-node access criteria.
+* `clsQueueLine.h`: Real-world implementation mapping line numbers, estimated serving periods, and visual queues.
+* `clsMyString.h` & `clsDate.h` & `clsString.h` & `clsUtil.h`: Structural utility wrappers for core processing data elements.
 
-A FIFO (First In First Out) structure supporting:
+---
 
-Enqueue
-Dequeue
-Front retrieval
-Size tracking
-Singly Linked List
+## 🚀 How to Include and Run
 
-Node-based linked structure supporting:
+Since this library is header-only and class-driven, you can easily include any data structure header directly into your primary file.
 
-Insertions
-Deletions
-Traversal
-Searching
-Doubly Linked List
-
-Bidirectional linked structure supporting:
-
-Forward & backward traversal
-Node insertion/deletion
-Efficient pointer manipulation
-🧠 Concepts Learned
-
-This project significantly improved my understanding of:
-
-Low-level memory management
-Internal behavior of data structures
-Pointer manipulation
-Software architecture
-Algorithmic thinking
-Debugging complex logic
-Writing reusable and maintainable code
-📌 Purpose of the Project
-
-The goal of this project was not only to use data structures, but to deeply understand how they are implemented internally and how memory is managed behind the scenes.
-
-This project helped strengthen my computer science fundamentals and problem-solving skills through hands-on implementation.
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/yousefwesam12/Data-Structures-Library.git](https://github.com/yousefwesam12/Data-Structures-Library.git)
